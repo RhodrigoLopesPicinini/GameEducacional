@@ -48,3 +48,23 @@ display = pygame.display.set_mode(
     (largura, altura)
 )
 # [fim]
+
+# [ini] Posição Objetos
+LixoX_vidro = 360
+LixoX_metal = 239
+LixoX_plastico = 122
+LixoX_papel = 479
+LixoX_organico = 598
+LixoY = altura * 0.74
+LixoLargura = 99
+garrafa_altura = 95
+garrafa_largura = 75
+bola_altura = 35
+bola_largura = 35
+copo_altura = 75
+copo_largura = 70
+lata_altura = 60
+lata_largura = 35
+maca_altura = 50
+maca_largura = 35
+# [fim]
