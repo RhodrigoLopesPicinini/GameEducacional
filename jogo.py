@@ -99,3 +99,41 @@ def perdeu(pontuação):
     jogo()
 
 # [fim]
+
+# [ini] Função Primária (Jogo)
+def jogo():
+
+    pygame.mixer.music.load("assets/background_music.mp3")
+    pygame.mixer.music.set_volume(0.050)
+    pygame.mixer.music.play(-1)
+    lixoPosX = random.randrange(0, 725)
+    n = random.randrange(0, 5)
+    movimento = 0
+    lixoPosY = -220
+    lixoPosX = largura * 0.45
+    velocidade = random.randrange(2, 6)
+    pontuação = 0
+    vidas = 3        
+    
+    while True:
+        display.blit(randomizer(n, garrafa_vidro, lata_metal, copo_plastico, bola_papel, maça_organico), (lixoPosX, lixoPosY))
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_LEFT:
+                    movimento = -5
+                elif evento.key == pygame.K_RIGHT:
+                    movimento = 5
+            if evento.type == pygame.KEYUP:
+                movimento = 0 
+        pygame.display.update()
+        display.blit(background, (0, 0))
+        display.blit(lixo_papel, (LixoX_papel, LixoY))
+        display.blit(lixo_metal, (LixoX_metal, LixoY))
+        display.blit(lixo_plastico, (LixoX_plastico, LixoY))
+        display.blit(lixo_vidro, (LixoX_vidro, LixoY))
+        display.blit(lixo_organico, (LixoX_organico, LixoY))    
+        lixoPosX = lixoPosX + movimento
+        lixoPosY = lixoPosY + velocidade
