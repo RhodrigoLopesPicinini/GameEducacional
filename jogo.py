@@ -68,3 +68,34 @@ lata_largura = 35
 maca_altura = 50
 maca_largura = 35
 # [fim]
+
+fps = pygame.time.Clock()
+
+largeText = pygame.font.Font("freesansbold.ttf", 20)
+
+# [ini] Funções Secundárias 
+def text_objects(texto, fonte, branco):
+    textSurface = fonte.render(texto, True, branco)
+    return textSurface, textSurface.get_rect()
+
+def texto_display(text, x, y, size):
+    largeText = pygame.font.Font("freesansbold.ttf", size)
+    TextSurf, TextRect = text_objects(text, largeText, branco)
+    TextRect.center = (x, y)
+    display.blit(TextSurf, TextRect)
+    pygame.display.update()
+
+def pontuação_display(display, x, y, pontuação, cor):
+    pontos = largeText.render("Pontuação: " + str(pontuação), True, cor)
+    display.blit(pontos, (x, y))
+
+def vidas_display(display, x, y, vidas, cor):
+    pontos = largeText.render("Vidas: " + str(vidas), True, cor)
+    display.blit(pontos, (x, y)) 
+   
+def perdeu(pontuação):
+    texto_display("Game Over!" + " Sua pontuação: " + str(pontuação), 300, 300, 40)
+    time.sleep(4)
+    jogo()
+
+# [fim]
