@@ -228,3 +228,9 @@ def jogo():
         if vidas == 0:
             perdeu(pontuação) 
         # [fim]
+        pontuação_display(display, 10, 300, pontuação, branco) 
+        vidas_display(display, 10, 270, vidas, branco) 
+        
+        fps.tick(60)
+        # [fim]
+jogo()
