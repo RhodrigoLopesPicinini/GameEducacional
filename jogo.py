@@ -3,6 +3,8 @@ import pygame
 import random
 import time
 
+from funcoes import randomizer
+
 pygame.init() #Pygame iniciado
 
 log = open("log.txt", "a")
@@ -137,3 +139,92 @@ def jogo():
         display.blit(lixo_organico, (LixoX_organico, LixoY))    
         lixoPosX = lixoPosX + movimento
         lixoPosY = lixoPosY + velocidade
+        # [ini] Sistema de Colisão
+        if n == 0:
+            if LixoY < lixoPosY + garrafa_altura:
+                if LixoX_vidro < lixoPosX and LixoX_vidro + LixoLargura > lixoPosX or lixoPosX + garrafa_largura > LixoX_vidro and lixoPosX + garrafa_largura < LixoX_vidro + LixoLargura:
+                    pontuação += 1
+                    pygame.mixer.Sound.play(garrafa_som)
+                    lixoPosY = -220
+                    n = random.randrange(0, 5)
+                    randomizer(n, garrafa_vidro, lata_metal, copo_plastico, bola_papel, maça_organico)
+                    velocidade = random.randrange(2, 6)
+                    lixoPosX = random.randrange(0, 725)
+                else:
+                    vidas -= 1
+                    lixoPosY = -220
+                    n = random.randrange(0, 5)
+                    randomizer(n, garrafa_vidro, lata_metal, copo_plastico, bola_papel, maça_organico)
+                    velocidade = random.randrange(2, 6)
+                    lixoPosX = random.randrange(0, 725)   
+        elif n == 1:
+            if LixoY < lixoPosY + lata_altura:
+                if LixoX_metal < lixoPosX and LixoX_metal + LixoLargura > lixoPosX or lixoPosX + lata_largura > LixoX_metal and lixoPosX + lata_largura < LixoX_metal + LixoLargura:
+                    pontuação += 1
+                    pygame.mixer.Sound.play(lata_som)
+                    lixoPosY = -220
+                    n = random.randrange(0, 5)
+                    randomizer(n, garrafa_vidro, lata_metal, copo_plastico, bola_papel, maça_organico)
+                    velocidade = random.randrange(2, 6)
+                    lixoPosX = random.randrange(0, 725)
+                else:
+                    vidas -= 1
+                    lixoPosY = -220
+                    n = random.randrange(0, 5)
+                    randomizer(n, garrafa_vidro, lata_metal, copo_plastico, bola_papel, maça_organico)
+                    velocidade = random.randrange(2, 6)
+                    lixoPosX = random.randrange(0, 725)
+        elif n == 2:
+            if LixoY < lixoPosY + copo_altura:
+                if LixoX_plastico < lixoPosX and LixoX_plastico + LixoLargura > lixoPosX or lixoPosX + copo_largura > LixoX_plastico and lixoPosX + copo_largura < LixoX_plastico + LixoLargura:
+                    pontuação += 1
+                    pygame.mixer.Sound.play(copo_som)
+                    lixoPosY = -220
+                    n = random.randrange(0, 5)
+                    randomizer(n, garrafa_vidro, lata_metal, copo_plastico, bola_papel, maça_organico)
+                    velocidade = random.randrange(2, 6)
+                    lixoPosX = random.randrange(0, 725)
+                else:
+                    vidas -= 1
+                    lixoPosY = -220
+                    n = random.randrange(0, 5)
+                    randomizer(n, garrafa_vidro, lata_metal, copo_plastico, bola_papel, maça_organico)
+                    velocidade = random.randrange(2, 6)
+                    lixoPosX = random.randrange(0, 725)                    
+        elif n == 3:
+            if LixoY < lixoPosY + bola_altura:
+                if LixoX_papel < lixoPosX and LixoX_papel + LixoLargura > lixoPosX or lixoPosX + bola_largura > LixoX_papel and lixoPosX + bola_largura < LixoX_papel + LixoLargura:
+                    pontuação += 1
+                    pygame.mixer.Sound.play(bola_som)
+                    lixoPosY = -220
+                    n = random.randrange(0, 5)
+                    randomizer(n, garrafa_vidro, lata_metal, copo_plastico, bola_papel, maça_organico)
+                    velocidade = random.randrange(2, 6)
+                    lixoPosX = random.randrange(0, 725)
+                else:
+                    vidas -= 1
+                    lixoPosY = -220
+                    n = random.randrange(0, 5)
+                    randomizer(n, garrafa_vidro, lata_metal, copo_plastico, bola_papel, maça_organico)
+                    velocidade = random.randrange(2, 6)
+                    lixoPosX = random.randrange(0, 725)                    
+        elif n == 4:
+            if LixoY < lixoPosY + maca_altura:
+                if LixoX_organico < lixoPosX and LixoX_organico + LixoLargura > lixoPosX or lixoPosX + maca_largura > LixoX_organico and lixoPosX + maca_largura < LixoX_organico + LixoLargura:
+                    pontuação += 1
+                    pygame.mixer.Sound.play(maca_som)  
+                    lixoPosY = -220
+                    n = random.randrange(0, 5)
+                    randomizer(n, garrafa_vidro, lata_metal, copo_plastico, bola_papel, maça_organico)
+                    velocidade = random.randrange(2, 6)
+                    lixoPosX = random.randrange(0, 725)
+                else:
+                    vidas -= 1
+                    lixoPosY = -220
+                    n = random.randrange(0, 5)
+                    randomizer(n, garrafa_vidro, lata_metal, copo_plastico, bola_papel, maça_organico) 
+                    velocidade = random.randrange(2, 6)
+                    lixoPosX = random.randrange(0, 725)
+        if vidas == 0:
+            perdeu(pontuação) 
+        # [fim]
